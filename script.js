@@ -10,7 +10,7 @@
 
 //------------------------------------------------------------------------------\\
 
-let computerChoice = Math.floor(Math.random() * (3 - 1 + 1)) + 1;;
+let computerChoice = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
 let playerChoice = prompt("Rock, Paper or scissors?: ");
 
 switch(playerChoice){
@@ -25,27 +25,47 @@ switch(playerChoice){
         break;
 }
 
-console.log(`Player chose: ${playerChoice} Computer chose: ${computerChoice}`);
+console.log(`Player chose: ${choiceReveal(playerChoice)} Computer chose: ${choiceReveal(computerChoice)}`);
 winner(playerChoice, computerChoice);
-
-// let playAgain = prompt("Another Round? Please type yes or no: ")
-
-// switch
-
 
 
 function winner (a, b){
     let ply = "Player";
     let com = "Computer";
 
-    if (a > b){
+    if((a === 3) && (b === 1)){
+
+        console.log(com + " WINS!")
+    }
+    else if ((b === 3) && (a === 1)){
         console.log(ply + " WINS!")
     }
     else if (a < b){
         console.log(com + " WINS!")
     }
+    else if (a > b){
+        console.log(ply + " WINS!")
+    }
     else{console.log('Tie! Try Again')}
 
 }
 
+function choiceReveal(a){
+    let choice = "";
+
+    if (a === 1){
+        choice = "Rock";
+    }
+    else if (a === 2 ){
+        choice = "Paper";
+    }
+    else if (a === 3 ){
+        choice = "Scissors";
+    }
+    else {
+        choice = "ERROR!";
+    }
+
+    return choice;
+}
 
