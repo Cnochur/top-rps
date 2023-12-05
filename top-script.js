@@ -1,4 +1,5 @@
-
+let playerScore = 0;
+let computerScore = 0;
 
 playGame();
 
@@ -8,11 +9,17 @@ playGame();
 //to launch game
 function playGame(){
 
+    //plays game for 5 rounds
     for(i = 0; i < 5; i++){
         console.log(`Round: ${[i + 1]}`)
-        
         playRound();
-        
+    }
+
+    //displays the winner and final score 
+    if (playerScore > computerScore){
+        console.log(`\nPlayer Wins: ${playerScore} - ${computerScore}`)
+    }else{
+        console.log(`Computer Wins: ${computerScore} - ${playerScore}`)
     }
 
 }
@@ -43,32 +50,21 @@ const computer = computerChoice();
 
 //assigns the point to round winner
 function winnigPoint(a){
-
-    let playerScore = 0;
-    let computerScore = 0;
-
     
     if (a === 1){
-        
-        console.log(`Player Score: ${playerScore}`);
+        playerScore++
+        console.log(`Player Score: ${playerScore}`)
+        console.log(`Computer Score: ${computerScore}`)
     }
     else if (a === 2){
-        
-        console.log(`Computer Score: ${computerScore}`);
+        computerScore++;
+        console.log(`Player Score: ${playerScore}`)
+        console.log(`Computer Score: ${computerScore}`)
     }
-    else{
+    else {
         console.log("Its a tie");
         playRound();
     }
-
-
-    // if (playerScore < 3 || computerScore < 3){
-    //     playGame();
-    // }
-    // else if (playerScore === 3 || computerScore === 3){
-    //     console.log("Game Over!")
-    // }
-
 }
 
 //takes player input via prompt
