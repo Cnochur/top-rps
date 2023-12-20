@@ -5,9 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Rock Paper Scissors</title>
-    <script src="../top-rps/top-script.js"></script>
+    <link rel="stylesheet" href="../rps-gui/stylesheet.css">
 </head>
 <body>
-    <h1> ROCK PAPER SCISSORS</h1>
+
+    <div class="game-container">
+        <h1>Rock Paper Scissors</h1>
+        <div class="score-board">
+            <article id="player-score"><h4>Player</h4><img src="../rps-gui/imgs/rps-player-icon.png" alt="cartoon-player"/>0</article>
+            <article id="round-counter">0/5</article>
+            <article id="com-score"><h4>Computer</h4><img src="../rps-gui/imgs/rps-computer-icon.png" alt="cartoon-computer"/>0</article>
+        </div>
+        <div class="player-choice-cards">
+            <img id="rock" src="../rps-gui/imgs/rps-rock.png" alt="cartoon-rock"/>
+            <img id="paper" src="../rps-gui/imgs/rps-paper.png" alt="cartoon-paper"/>
+            <img id="scissors" src="../rps-gui/imgs/rps-scissors.png" alt="cartoon-scissors"/>
+        </div>
+        <div class="result-panel">
+            <h2 class="win">YOU WIN!</h2>
+        </div>
+
+    </div>
+    
 </body>
 </html>
