@@ -17,3 +17,8 @@ Still to-do
 -----------------------------------------------------------
 
 I will also be adding a GUI in the near future.
+
+
+References
+-----------------------------------------------------------
+Shout out to Slashmyaxl on TOP Discord!!
