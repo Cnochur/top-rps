@@ -10,15 +10,17 @@ input which is then compared to a randomly generated guess
 from the computer. In the event of a tie the round is replayed
 until a winner is defined. 
 
-The game ends after 5 rounds, announcing the winner and final score.
+The game ends after either player wins 5 points, repeating 
+the point if a tie happens.
+
+I have learned a lot building this project:
+
+- My knowledge of java grew deeper.
+- My knowledge of git became better learning how to branch, pull (slightly) and merge onto the main.
+
 
 -----------------------------------------------------------
 Still to-do
 -----------------------------------------------------------
+When tie happens make aware on display.
 
-I will also be adding a GUI in the near future.
-
-
-References
------------------------------------------------------------
-Shout out to Slashmyaxl on TOP Discord!!
