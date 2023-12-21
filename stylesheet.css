@@ -1,26 +1,27 @@
-
-body{
+body {
     background: radial-gradient(circle, #868686 0%, #000000 100%);
-   
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase;
 }
-.game-container{
-    display: block;
+
+.game-container {
     margin: auto;
-    width: 600px;
-    height: 600px;
+    width: 800px;
+    height: 800px;
     text-align: center;
     padding: 5px;
+    display: block;
 }
-h1{
+
+h1 {
     width: 100%;
     letter-spacing: 2px;
     color: #7405a3;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 1em;
     font-size: 55px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-transform: uppercase;
-    text-shadow:1px 1px 0px #957dad,
+    text-shadow: 1px 1px 0px #957dad,
                 1px 2px 0px #957dad,
                 1px 3px 0px #957dad,
                 1px 4px 0px #957dad,
@@ -29,16 +30,17 @@ h1{
                 1px 10px 5px rgba(16, 16, 16, 0.5),
                 1px 15px 10px rgba(16, 16, 16, 0.4),
                 1px 20px 30px rgba(16, 16, 16, 0.3),
-                1px 25px 50px rgba(16, 16, 16, 0.2)
+                1px 25px 50px rgba(16, 16, 16, 0.2);
 }
-.score-board{
-    display: flex;
-    justify-content: space-evenly;
+
+.score-board {
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     margin-top: 10px;
 }
-.score-board > article{
+
+.score-board > article {
     height: 75px;
     width: 100%;
     display: flex;
@@ -47,42 +49,63 @@ h1{
     align-items: center;
     font-size: 1em;
 }
-h4{
-    margin: 0px;
+
+.score-board > img {
+    margin: 0;
 }
-.score-board > img{
-    margin: 0px;
-}
-.player-choice-cards{
+
+.player-choice-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     align-items: center;
     gap: 1em;
+    margin-left: 100px;
+    margin-top: -50px;
     height: 50vh;
     padding: 10px;
 }
-.player-choice-cards > img{
-    height: 200px;
-    width: 200px;
-    margin: 0px;
+
+.player-choice-cards > img {
+    height: 120px;
+    width: 120px;
+    margin: 0;
     opacity: 0.9;
 }
-.player-choice-cards > img:hover{
+
+.player-choice-cards > img:hover {
     transform: scale(1.05);
 }
-.result-panel{
-    background-color: none;
-}
-.win{
+
+.result-panel {
     display: none;
+    background-color: none;
+    text-align: center;
+    align-items: center;
+    color: #7405a3;
     font-size: 50px;
     letter-spacing: 10px;
-    margin-top: 0px;
-    color: #7405a3;
+    margin-left: 160px;
+    margin-top: -450px;
     opacity: 1;
+    position: absolute; /* To place it at the center of the screen */
 }
 
 
 
+.start-button {
+    display: block;
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #7405a3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 50px; 
+    margin-left: 300px;/* Adjust the top margin as needed */
+}
 
+.start-button:hover {
+    background-color: #5a036e;
+}

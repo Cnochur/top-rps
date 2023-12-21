@@ -1,90 +1,84 @@
-const gameWindow = document.querySelector('#game-container');
-const playerScore = document.querySelector('#player-score');
-const computerScore = document.querySelector('#com-score');
-const playerChoiceCards = document.querySelectorAll('.player-choice-cards img');
-const resultDisplay = document.querySelector('#result-panel')
+document.addEventListener('DOMContentLoaded', () => {
 
-let playerScoreCount = 0;
-let computerScoreCount = 0;
+    const scoreBoard = document.querySelector('.score-board');
+    const playerScore = document.querySelector('#player-score span');
+    const computerScore = document.querySelector('#com-score span');
+    const playerChoiceCards = document.querySelectorAll('.player-choice-cards > img');
+    const rockCard = document.querySelector('#rock');
+    const paperCard = document.querySelector('#paper');
+    const scissorsCard = document.querySelector('#scissors');
+    const resultPanel = document.querySelector('.result-panel');
+    const startButton = document.querySelector('#start-button');
 
-const startButton = document.createElement('button');
-startButton.textContent = 'PLAY';
+    
+    scoreBoard.style.display = 'none';
+    playerChoiceCards.forEach(choice => choice.style.display = 'none');
+    resultPanel.style.display = 'none';
+
+    let playerScoreCount = 0;
+    let computerScoreCount = 0;
+
+    startButton.addEventListener('click', () => {
+        startButton.style.display = 'none';
+        resultPanel.style.display = 'none';
+        scoreBoard.style.display = 'flex';
+        playerChoiceCards.forEach(choice => choice.style.display = 'block');
+    });
+
+    
+    rockCard.addEventListener('click', () => playRound('rock'));
+    paperCard.addEventListener('click', () => playRound('paper'));
+    scissorsCard.addEventListener('click', () => playRound('scissors'))
 
 
-startButton.addEventListener('click', () => {
 
-    if (playerScoreCount < 5 && computerScoreCount < 5) {
-
-        playRound();
-
-    } else {
-
-        if (playerScoreCount > computerScoreCount) {
-
-            resultDisplay.textContent = `Player Wins: ${playerScoreCount} - ${computerScoreCount}`;
-
+    function playRound(player) {
+        const computer = computerChoice();
+        if ((player === 'rock' && computer === 'scissors') ||
+            (player === 'paper' && computer === 'rock') ||
+            (player === 'scissors' && computer === 'paper')) {
+            winningPoint('player');
+        } else if ((player === 'rock' && computer === 'paper') ||
+            (player === 'paper' && computer === 'scissors') ||
+            (player === 'scissors' && computer === 'rock')) {
+            winningPoint('computer');
         } else {
-
-            resultDisplay.textContent = `Computer Wins: ${computerScoreCount} - ${playerScoreCount}`;
+            console.log("It's a tie");
         }
+    }
+
+    function winningPoint(winner) {
+
+        if (winner === 'player') {
+            playerScoreCount++;
+            playerScore.textContent = `Player: ${playerScoreCount}`;
+        } else if (winner === 'computer') {
+            computerScoreCount++;
+            computerScore.textContent = `Computer: ${computerScoreCount}`;
+        }
+    
+        if (playerScoreCount === 5 || computerScoreCount === 5) {
+
+            const resultMessage = playerScoreCount === 5 ? 'Player Wins!' : 'Computer Wins!';
+            resultPanel.textContent = resultMessage;
+            
+            rockCard.style.display = 'none';
+            paperCard.style.display = 'none';
+            scissorsCard.style.display = 'none';
+            scoreBoard.style.display = 'none';
+            resultPanel.style.display = 'block'
+            startButton.style.display = 'block';
+            // Reset scores
+            playerScoreCount = 0;
+            computerScoreCount = 0;
+            playerScore.textContent = 'Player: 0';
+            computerScore.textContent = 'Computer: 0';
+        }
+    }
+
+    function computerChoice() {
+        const choices = ['rock', 'paper', 'scissors'];
+        const randomNumber = Math.floor(Math.random() * choices.length);
+        return choices[randomNumber];
     }
 });
-
-
-
-function playRound () {
-
-
-    const player = playerChoice();
-    const computer = computerChoice();
-    
-        if( player === 1 && computer === 3){
-            return winnigPoint(1);
-        }
-        else if (player === 3 && computer === 1){
-            return winnigPoint(2);
-        }
-        else if (player > computer){
-            return winnigPoint(1);
-        }
-        else if (player < computer){
-            return winnigPoint(2);
-        } 
-        else if (player === computer){
-            return winnigPoint(0);
-        }
-    }
-    
-
-function winnigPoint(a){
-    if (a === 1) {
-        playerScoreCount++;
-        playerScore.textContent = `Player: ${playerScoreCount}`;
-    } else if (a === 2) {
-        computerScoreCount++;
-        computerScore.textContent = `Computer: ${computerScoreCount}`;
-    } else {
-        console.log("It's a tie");
-        playRound(); // Avoid recursion here, it's better to call playRound directly
-    }
-}
-
-    function computerChoice(){
-
-        let ans = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-    
-        if (ans === 1){
-            console.log("Computer chose: Rock");
-        }
-        else if (ans === 2 ){
-            console.log("Computer chose: Paper");
-        }
-        else if (ans === 3 ){
-            console.log("Computer chose: Scissors");
-        }
-        else {
-            ans = "ERROR!";
-        }
-    
-        return ans;
-    }
